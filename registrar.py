@@ -1,11 +1,13 @@
 #coding=utf-8
-import json,datetime
+import os, json,datetime
 from eth_utils import decode_hex
 from web3 import Web3, KeepAliveRPCProvider, IPCProvider
 web3 = Web3(KeepAliveRPCProvider(host='localhost', port='8545'))
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 address = '0x6090A6e47849629b7245Dfa1Ca21D94cd15878Ef'
-abi = json.load(open('./abi/registrar.json'))
+abi = json.load(open(os.path.join(BASE_DIR, 'abi/registrar.json')))
 registrar = web3.eth.contract(abi=abi, address=address)
 
 def lookup(name):
