@@ -1,5 +1,5 @@
 #coding=utf-8
-import os, json,datetime
+import os, json,datetime, pytz
 from eth_utils import decode_hex
 from web3 import Web3, KeepAliveRPCProvider, IPCProvider
 web3 = Web3(KeepAliveRPCProvider(host='localhost', port='8545'))
@@ -17,7 +17,7 @@ def lookup(name):
 def get_allowed_time(name):
     name = decode_hex(web3.sha3(web3.toHex(name)))
     ts = registrar.call().getAllowedTime(name)
-    return datetime.datetime.fromtimestamp(ts)
+    return datetime.datetime.fromtimestamp(ts, tz=pytz.UTC)
 
 def start_auction(name, account, gas=1000000):
     name = decode_hex(web3.sha3(web3.toHex(name)))
