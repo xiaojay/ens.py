@@ -14,10 +14,14 @@ def lookup(name):
     name = decode_hex(web3.sha3(web3.toHex(name)))
     return registrar.call().entries(name)
 
-def get_allowed_time(name):
+def get_allowed_time2(name):
     name = decode_hex(web3.sha3(web3.toHex(name)))
     ts = registrar.call().getAllowedTime(name)
     return datetime.datetime.fromtimestamp(ts, tz=pytz.UTC)
+
+def get_allowed_time(name):
+    name = decode_hex(web3.sha3(web3.toHex(name)))
+    return registrar.call().getAllowedTime(name)
 
 def start_auction(name, account, gas=1000000):
     name = decode_hex(web3.sha3(web3.toHex(name)))
