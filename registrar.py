@@ -23,20 +23,26 @@ def get_allowed_time(name):
     name = decode_hex(web3.sha3(web3.toHex(name)))
     return registrar.call().getAllowedTime(name)
 
-def start_auction(name, account, gas=1000000):
+def start_auction(name, account, gas=1000000, gas_price=''):
     name = decode_hex(web3.sha3(web3.toHex(name)))
-    return registrar.transact({'from':account, 'gas':gas}).startAuction(name)
+    if not gas_price:
+        return registrar.transact({'from':account, 'gas':gas}).startAuction(name)
+    return registrar.transact({'from':account, 'gas':gas, 'gasPrice':gas_price}).startAuction(name)
 
-def bid(name, account, price, disguise_price, secret, gas=1000000):
+def bid(name, account, price, disguise_price, secret, gas=1000000, gas_price=''):
     name = decode_hex(web3.sha3(web3.toHex(name)))
     secret = decode_hex(web3.sha3(web3.toHex(secret)))
     price = web3.toWei(price, 'ether')
     disguise_price = web3.toWei(disguise_price, 'ether')
     sb = registrar.call().shaBid(name, account, price, secret)
-    return registrar.transact({'from':account, 'gas':gas, 'value':disguise_price}).newBid(sb)
+    if not gas_price:
+        return registrar.transact({'from':account, 'gas':gas, 'value':disguise_price}).newBid(sb)
+    return registrar.transact({'from':account, 'gas':gas, 'gasPrice':gas_price, 'value':disguise_price}).newBid(sb)
 
-def unseal_bid(name, account, price, sercrect, gas=1000000):
+def unseal_bid(name, account, price, sercrect, gas=1000000, gas_price=''):
     name = decode_hex(web3.sha3(web3.toHex(name)))
     secret = decode_hex(web3.sha3(web3.toHex(secret)))
     price = web3.toWei(price, 'ether')
-    return registrar.transact({'from':account, 'gas':gas}).unsealBid(name, price, secret)
+    if not gas_price:
+        return registrar.transact({'from':account, 'gas':gas}).unsealBid(name, price, secret)
+    return registrar.transact({'from':account, 'gas':gas, 'gasPrice':gas_price}).unsealBid(name, price, secret)
