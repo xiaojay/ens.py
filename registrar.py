@@ -37,7 +37,6 @@ def bid(name, account, price, disguise_price, secret, gas=1000000, gas_price='')
     sb = registrar.call().shaBid(name, account, price, secret)
     if not gas_price:
         return registrar.transact({'from':account, 'gas':gas, 'value':disguise_price}).newBid(sb)
-    print gas_price
     return registrar.transact({'from':account, 'gas':gas, 'gasPrice':gas_price, 'value':disguise_price}).newBid(sb)
 
 def unseal_bid(name, account, price, secret, gas=1000000, gas_price=''):
