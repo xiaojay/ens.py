@@ -46,3 +46,10 @@ def unseal_bid(name, account, price, secret, gas=1000000, gas_price=''):
     if not gas_price:
         return registrar.transact({'from':account, 'gas':gas}).unsealBid(name, price, secret)
     return registrar.transact({'from':account, 'gas':gas, 'gasPrice':gas_price}).unsealBid(name, price, secret)
+
+def finalize(name, account, gas=1000000, gas_price=''):
+    name = decode_hex(web3.sha3(web3.toHex(name)))
+    if not gas_price:
+        return registrar.transact({'from':account, 'gas':gas}).finalizeAuction(name)
+    return registrar.transact({'from':account, 'gas':gas, 'gasPrice':gas_price}).finalizeAuction(name)
+    
