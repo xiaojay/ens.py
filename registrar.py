@@ -10,6 +10,9 @@ address = '0x6090A6e47849629b7245Dfa1Ca21D94cd15878Ef'
 abi = json.load(open(os.path.join(BASE_DIR, 'abi/registrar.json')))
 registrar = web3.eth.contract(abi=abi, address=address)
 
+def name_hash(name):
+    return web3.sha3(web3.toHex(name))
+
 def lookup(name):
     name = decode_hex(web3.sha3(web3.toHex(name)))
     return registrar.call().entries(name)
