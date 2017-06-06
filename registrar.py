@@ -1,26 +1,11 @@
 #coding=utf-8
 import os, json,datetime, pytz
 from eth_utils import decode_hex
-from web3 import Web3, KeepAliveRPCProvider, IPCProvider
-web3 = Web3(KeepAliveRPCProvider(host='localhost', port='8545'))
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+from settings import *
 
 address = '0x6090A6e47849629b7245Dfa1Ca21D94cd15878Ef'
 abi = json.load(open(os.path.join(BASE_DIR, 'abi/registrar.json')))
 registrar = web3.eth.contract(abi=abi, address=address)
-
-def name_hash(name):
-    return web3.sha3(web3.toHex(name))
-
-def name_hash2(name):
-    node = '0x0000000000000000000000000000000000000000000000000000000000000000'
-    if name != '':
-        labels = name.split('.')
-        labels.reverse()
-        for label in labels:
-            node = web3.sha3(node + name_hash(label)[2:], encoding='hex')
-    return node
 
 def lookup(name):
     name = decode_hex(web3.sha3(web3.toHex(name)))
@@ -64,4 +49,3 @@ def finalize(name, account, gas=1000000, gas_price=''):
     if not gas_price:
         return registrar.transact({'from':account, 'gas':gas}).finalizeAuction(name)
     return registrar.transact({'from':account, 'gas':gas, 'gasPrice':gas_price}).finalizeAuction(name)
-    
