@@ -13,6 +13,15 @@ registrar = web3.eth.contract(abi=abi, address=address)
 def name_hash(name):
     return web3.sha3(web3.toHex(name))
 
+def name_hash2(name):
+    node = '0x0000000000000000000000000000000000000000000000000000000000000000'
+    if name != '':
+        labels = name.split('.')
+        labels.reverse()
+        for label in labels:
+            node = web3.sha3(node + name_hash(label)[2:], encoding='hex')
+    return node
+
 def lookup(name):
     name = decode_hex(web3.sha3(web3.toHex(name)))
     return registrar.call().entries(name)
