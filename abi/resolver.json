@@ -1,0 +1,380 @@
+[
+ {
+  "inputs": [
+   {
+    "type": "bytes4", 
+    "name": "interfaceID"
+   }
+  ], 
+  "constant": true, 
+  "name": "supportsInterface", 
+  "outputs": [
+   {
+    "type": "bool", 
+    "name": ""
+   }
+  ], 
+  "payable": false, 
+  "type": "function"
+ }, 
+ {
+  "inputs": [
+   {
+    "type": "bytes32", 
+    "name": "node"
+   }, 
+   {
+    "type": "string", 
+    "name": "key"
+   }, 
+   {
+    "type": "string", 
+    "name": "value"
+   }
+  ], 
+  "constant": false, 
+  "name": "setText", 
+  "outputs": [], 
+  "payable": false, 
+  "type": "function"
+ }, 
+ {
+  "inputs": [
+   {
+    "type": "bytes32", 
+    "name": "node"
+   }, 
+   {
+    "type": "uint256", 
+    "name": "contentTypes"
+   }
+  ], 
+  "constant": true, 
+  "name": "ABI", 
+  "outputs": [
+   {
+    "type": "uint256", 
+    "name": "contentType"
+   }, 
+   {
+    "type": "bytes", 
+    "name": "data"
+   }
+  ], 
+  "payable": false, 
+  "type": "function"
+ }, 
+ {
+  "inputs": [
+   {
+    "type": "bytes32", 
+    "name": "node"
+   }, 
+   {
+    "type": "bytes32", 
+    "name": "x"
+   }, 
+   {
+    "type": "bytes32", 
+    "name": "y"
+   }
+  ], 
+  "constant": false, 
+  "name": "setPubkey", 
+  "outputs": [], 
+  "payable": false, 
+  "type": "function"
+ }, 
+ {
+  "inputs": [
+   {
+    "type": "bytes32", 
+    "name": "node"
+   }
+  ], 
+  "constant": true, 
+  "name": "content", 
+  "outputs": [
+   {
+    "type": "bytes32", 
+    "name": "ret"
+   }
+  ], 
+  "payable": false, 
+  "type": "function"
+ }, 
+ {
+  "inputs": [
+   {
+    "type": "bytes32", 
+    "name": "node"
+   }
+  ], 
+  "constant": true, 
+  "name": "addr", 
+  "outputs": [
+   {
+    "type": "address", 
+    "name": "ret"
+   }
+  ], 
+  "payable": false, 
+  "type": "function"
+ }, 
+ {
+  "inputs": [
+   {
+    "type": "bytes32", 
+    "name": "node"
+   }, 
+   {
+    "type": "string", 
+    "name": "key"
+   }
+  ], 
+  "constant": true, 
+  "name": "text", 
+  "outputs": [
+   {
+    "type": "string", 
+    "name": "ret"
+   }
+  ], 
+  "payable": false, 
+  "type": "function"
+ }, 
+ {
+  "inputs": [
+   {
+    "type": "bytes32", 
+    "name": "node"
+   }, 
+   {
+    "type": "uint256", 
+    "name": "contentType"
+   }, 
+   {
+    "type": "bytes", 
+    "name": "data"
+   }
+  ], 
+  "constant": false, 
+  "name": "setABI", 
+  "outputs": [], 
+  "payable": false, 
+  "type": "function"
+ }, 
+ {
+  "inputs": [
+   {
+    "type": "bytes32", 
+    "name": "node"
+   }
+  ], 
+  "constant": true, 
+  "name": "name", 
+  "outputs": [
+   {
+    "type": "string", 
+    "name": "ret"
+   }
+  ], 
+  "payable": false, 
+  "type": "function"
+ }, 
+ {
+  "inputs": [
+   {
+    "type": "bytes32", 
+    "name": "node"
+   }, 
+   {
+    "type": "string", 
+    "name": "name"
+   }
+  ], 
+  "constant": false, 
+  "name": "setName", 
+  "outputs": [], 
+  "payable": false, 
+  "type": "function"
+ }, 
+ {
+  "inputs": [
+   {
+    "type": "bytes32", 
+    "name": "node"
+   }, 
+   {
+    "type": "bytes32", 
+    "name": "hash"
+   }
+  ], 
+  "constant": false, 
+  "name": "setContent", 
+  "outputs": [], 
+  "payable": false, 
+  "type": "function"
+ }, 
+ {
+  "inputs": [
+   {
+    "type": "bytes32", 
+    "name": "node"
+   }
+  ], 
+  "constant": true, 
+  "name": "pubkey", 
+  "outputs": [
+   {
+    "type": "bytes32", 
+    "name": "x"
+   }, 
+   {
+    "type": "bytes32", 
+    "name": "y"
+   }
+  ], 
+  "payable": false, 
+  "type": "function"
+ }, 
+ {
+  "inputs": [
+   {
+    "type": "bytes32", 
+    "name": "node"
+   }, 
+   {
+    "type": "address", 
+    "name": "addr"
+   }
+  ], 
+  "constant": false, 
+  "name": "setAddr", 
+  "outputs": [], 
+  "payable": false, 
+  "type": "function"
+ }, 
+ {
+  "inputs": [
+   {
+    "type": "address", 
+    "name": "ensAddr"
+   }
+  ], 
+  "type": "constructor", 
+  "payable": false
+ }, 
+ {
+  "inputs": [
+   {
+    "indexed": true, 
+    "type": "bytes32", 
+    "name": "node"
+   }, 
+   {
+    "indexed": false, 
+    "type": "address", 
+    "name": "a"
+   }
+  ], 
+  "type": "event", 
+  "name": "AddrChanged", 
+  "anonymous": false
+ }, 
+ {
+  "inputs": [
+   {
+    "indexed": true, 
+    "type": "bytes32", 
+    "name": "node"
+   }, 
+   {
+    "indexed": false, 
+    "type": "bytes32", 
+    "name": "hash"
+   }
+  ], 
+  "type": "event", 
+  "name": "ContentChanged", 
+  "anonymous": false
+ }, 
+ {
+  "inputs": [
+   {
+    "indexed": true, 
+    "type": "bytes32", 
+    "name": "node"
+   }, 
+   {
+    "indexed": false, 
+    "type": "string", 
+    "name": "name"
+   }
+  ], 
+  "type": "event", 
+  "name": "NameChanged", 
+  "anonymous": false
+ }, 
+ {
+  "inputs": [
+   {
+    "indexed": true, 
+    "type": "bytes32", 
+    "name": "node"
+   }, 
+   {
+    "indexed": true, 
+    "type": "uint256", 
+    "name": "contentType"
+   }
+  ], 
+  "type": "event", 
+  "name": "ABIChanged", 
+  "anonymous": false
+ }, 
+ {
+  "inputs": [
+   {
+    "indexed": true, 
+    "type": "bytes32", 
+    "name": "node"
+   }, 
+   {
+    "indexed": false, 
+    "type": "bytes32", 
+    "name": "x"
+   }, 
+   {
+    "indexed": false, 
+    "type": "bytes32", 
+    "name": "y"
+   }
+  ], 
+  "type": "event", 
+  "name": "PubkeyChanged", 
+  "anonymous": false
+ }, 
+ {
+  "inputs": [
+   {
+    "indexed": true, 
+    "type": "bytes32", 
+    "name": "node"
+   }, 
+   {
+    "indexed": true, 
+    "type": "string", 
+    "name": "indexedKey"
+   }, 
+   {
+    "indexed": false, 
+    "type": "string", 
+    "name": "key"
+   }
+  ], 
+  "type": "event", 
+  "name": "TextChanged", 
+  "anonymous": false
+ }
+]
